@@ -1,9 +1,9 @@
 import tensorflow as tf
 
 class NarrowUNet(tf.keras.Model):
-    def __init__(self, name='vgg'):
+    def __init__(self, h, w, c, name='vgg'):
      #Build the model
-     inputs = tf.keras.layers.Input((IMG_HEIGHT, IMG_WIDTH, IMG_CHANNELS))
+     inputs = tf.keras.layers.Input((h, w, c))
 
      #Contraction path
      c1 = tf.keras.layers.Conv2D(16, (3, 3), activation='relu', kernel_initializer='he_normal', padding='same')(inputs)

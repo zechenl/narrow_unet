@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow.compat.v1 import ConfigProto
 from tensorflow.compat.v1 import InteractiveSession
+
 import os, sys
 import random
 import numpy as np
@@ -17,13 +18,13 @@ from tensorflow.keras.callbacks import TensorBoard
 import time
 
 sys.path.insert(1, '.')
-from . import deep_learning_techniques
+from deep_learning_techniques import networks
 
-parser = argparser.parser_args()
+parser = argparse.ArgumentParser()
 parser.add_argument("-g", "--gpu", required=True, type=str)
-args = parser.parser_args()
+args = parser.parse_args()
 
-os.environ["CUDA_VISIBLE_DEVICES"] = args.gpus
+os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 
 # Initialise the input image dimensions and the number of colour channels
 # X-ray images are greyscale so they we require only one colour channel
@@ -100,7 +101,7 @@ X_test_stretch = np.multiply(X_test_temp,10)
 
 random.seed(a=8, version=2)
 
-model = deep_learning_techniques.networks.NarrowUNet()
+model = networks.NarrowUNet(w=IMG_WIDTH, h=IMG_HEIGHT, c=IMG_CHANNELS)
 model.compile(
     optimizer='sgd',
     loss='mse',
@@ -108,6 +109,7 @@ model.compile(
 model.summary()
 
 NAME = "narrow-unet-unstretched{}".format(int(time.time()))
+tensorboard = TensorBoard(log_dir="logs/{}".format(NAME))
 
 #Callbacks
 callbacks = [
