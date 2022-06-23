@@ -11,3 +11,10 @@ By Samuel Li & Matthew French
   ```source .narrow_unet/bin/activate```
 3. Install requirements
   ``` pip install -r requirements.txt```
+
+### Training  
+1. Check GPU availability  
+```nvidia-smi``` 
+2. Run training script 
+```python3 scripts/train_vgg_on_unstretched_ballies.py -g #gpu```
+Note: the flag g corresponds to the GPU device to use for training
