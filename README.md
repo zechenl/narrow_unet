@@ -2,13 +2,13 @@
 By Samuel Li & Matthew French
 
 ## Overview
+This repository implements methods described in: Samuel Z. Li, Matthew G. French, Konstantin M. Pavlov, Heyang Thomas Li, "Shallow U-Net deep learning approach for phase retrieval in propagation-based phase-contrast Imaging," Proc. SPIE 12242, Developments in X-Ray Tomography XIV, 122421Q (14 October 2022); https://doi.org/10.1117/12.2644579
+
 This project implements a parameter-efficient ("shallow") U-Net architecture
 for phase retrieval in propagation-based X-ray phase-contrast imaging.
 
 The goal is to reconstruct phase information from intensity-only measurements,
 an inverse problem traditionally solved using iterative physics-based methods.
-
-Samuel Z. Li, Matthew G. French, Konstantin M. Pavlov, Heyang Thomas Li, "Shallow U-Net deep learning approach for phase retrieval in propagation-based phase-contrast Imaging," Proc. SPIE 12242, Developments in X-Ray Tomography XIV, 122421Q (14 October 2022); https://doi.org/10.1117/12.2644579
 
 ## Technical Approach
 
@@ -34,5 +34,6 @@ Samuel Z. Li, Matthew G. French, Konstantin M. Pavlov, Heyang Thomas Li, "Shallo
 2. Run training script 
 ```python3 scripts/train_vgg_on_unstretched_ballies.py -g #gpu```
 Note: the flag g corresponds to the GPU device to use for training
+
 
 
